@@ -96,7 +96,8 @@ io.on("connection", (socket) => {
 });
 
 // Start server on port
-const port = process.env.PORT;
-server.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+// const port = process.env.PORT;
+// server.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
+export default server; // <-- Yeh nayi line add karein
