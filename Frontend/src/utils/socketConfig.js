@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 
 // Get the API URL from environment variables or use defaults
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
+const API_URL = import.meta.env.VITE_API_URL || "https://my-worksuite-project-u8ar.vercel.app";
 
 // Create and export the socket instance
 export const socket = io(API_URL, {

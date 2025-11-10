@@ -48,7 +48,7 @@ function AddEmployee() {
     formData.append('image', employee.image);
     formData.append('category_id', employee.category_id);
 
-    axios.post('http://localhost:5001/auth/add_employee', formData)
+    axios.post('https://my-worksuite-project-u8ar.vercel.app/auth/add_employee', formData)
       .then(result => {
         console.log(result.data);
         if (result.data.success) {

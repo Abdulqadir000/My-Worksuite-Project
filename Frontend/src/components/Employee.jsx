@@ -71,7 +71,7 @@ const Employee = () => {
                   <div style={{ width: "100px", height: "100px" }}>
                     {employee.image ? (
                       <img
-                        src={`http://localhost:5001/Images/${employee.image}`}
+                        src={`https://my-worksuite-project-u8ar.vercel.app/Images/${employee.image}`}
                         alt={employee.name}
                         className="employee-image"
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
