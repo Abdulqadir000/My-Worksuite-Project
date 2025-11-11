@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { socket } from "../../utils/socketConfig.js";
+// import { socket } from "../../utils/socketConfig.js";
 import {
   Card,
   Button,
@@ -36,24 +36,24 @@ const AdminProjects = () => {
     fetchClients();
 
     // Listen for real-time updates
-    socket.on("taskUpdated", (updatedTask) => {
-      setProjects((prevProjects) =>
-        prevProjects.map((project) => {
-          if (project.project_id === updatedTask.project_id) {
-            return {
-              ...project,
-              taskCount:
-                project.taskCount +
-                (updatedTask.status === "completed" ? -1 : 1),
-            };
-          }
-          return project;
-        })
-      );
-    });
+    // socket.on("taskUpdated", (updatedTask) => {
+    //   setProjects((prevProjects) =>
+    //     prevProjects.map((project) => {
+    //       if (project.project_id === updatedTask.project_id) {
+    //         return {
+    //           ...project,
+    //           taskCount:
+    //             project.taskCount +
+    //             (updatedTask.status === "completed" ? -1 : 1),
+    //         };
+    //       }
+    //       return project;
+    //     })
+    //   );
+    // });
 
     return () => {
-      socket.off("taskUpdated");
+      // socket.off("taskUpdated");
     };
   }, []);
 

@@ -109,7 +109,7 @@ function EmployeeDetail() {
                   <div className="col-md-5">
                     <div className="d-flex justify-content-center">
                       <img
-                        src={`https://my-worksuite-project-u8ar.vercel.app/Images/${employee.image}`}
+                        src={`${apiUrl}/Images/${employee.image}`}
                         className="card-img"
                         alt="Employee"
                       />

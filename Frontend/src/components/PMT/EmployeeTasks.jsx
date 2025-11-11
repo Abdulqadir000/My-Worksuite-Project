@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Table, Button, Container } from "react-bootstrap";
 import "./EmployeeTasks.css";
-import { socket } from "../../utils/socketConfig.js";
+// import { socket } from "../../utils/socketConfig.js";
 import axios from "axios";
 
 const EmployeeTasks = ({ employeeId }) => {
@@ -35,34 +35,34 @@ const EmployeeTasks = ({ employeeId }) => {
   }, [employeeId]);
 
   // Listen for real-time task updates
-  useEffect(() => {
-    socket.on("taskUpdated", (updatedTask) => {
-      console.log("Task updated:", updatedTask);
-      setTasks((prevTasks) =>
-        prevTasks.map((task) =>
-          task.task_id === updatedTask.task_id ? updatedTask : task
-        )
-      );
-    });
-
-    socket.on("taskAssigned", (newTask) => {
-      console.log("New task assigned:", newTask);
-      setTasks((prevTasks) => [...prevTasks, newTask]);
-    });
-
-    socket.on("taskDeleted", (deletedTask) => {
-      console.log("Task deleted:", deletedTask);
-      setTasks((prevTasks) =>
-        prevTasks.filter((task) => task.task_id !== deletedTask.taskId)
-      );
-    });
-
-    return () => {
-      socket.off("taskUpdated");
-      socket.off("taskAssigned");
-      socket.off("taskDeleted");
-    };
-  }, []);
+  // useEffect(() => {
+  //   socket.on("taskUpdated", (updatedTask) => {
+  //     console.log("Task updated:", updatedTask);
+  //     setTasks((prevTasks) =>
+  //       prevTasks.map((task) =>
+  //         task.task_id === updatedTask.task_id ? updatedTask : task
+  //       )
+  //     );
+  //   });
+  //
+  //   socket.on("taskAssigned", (newTask) => {
+  //     console.log("New task assigned:", newTask);
+  //     setTasks((prevTasks) => [...prevTasks, newTask]);
+  //   });
+  //
+  //   socket.on("taskDeleted", (deletedTask) => {
+  //     console.log("Task deleted:", deletedTask);
+  //     setTasks((prevTasks) =>
+  //       prevTasks.filter((task) => task.task_id !== deletedTask.taskId)
+  //     );
+  //   });
+  //
+  //   return () => {
+  //     socket.off("taskUpdated");
+  //     socket.off("taskAssigned");
+  //     socket.off("taskDeleted");
+  //   };
+  // }, []);
 
   // Function to update task status
   const handleTaskStatusChange = (taskId, status) => {
@@ -81,7 +81,7 @@ const EmployeeTasks = ({ employeeId }) => {
               task.task_id === taskId ? { ...task, status } : task
             )
           );
-          socket.emit("updateTask", res.data.task); // Notify real-time change
+          // socket.emit("updateTask", res.data.task); // Notify real-time change
         } else {
           console.error("Failed to update task:", res.data.message);
         }

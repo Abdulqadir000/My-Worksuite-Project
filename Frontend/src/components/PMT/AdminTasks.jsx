@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { socket } from "../../utils/socketConfig.js";
+// import { socket } from "../../utils/socketConfig.js";
 import {
   Table,
   Button,
@@ -36,16 +36,16 @@ const AdminTasks = () => {
     fetchProjects();
 
     // Listen for real-time updates
-    socket.on("taskUpdated", (updatedTask) => {
-      setTasks((prevTasks) =>
-        prevTasks.map((task) =>
-          task.task_id === updatedTask.task_id ? updatedTask : task
-        )
-      );
-    });
+    // socket.on("taskUpdated", (updatedTask) => {
+    //   setTasks((prevTasks) =>
+    //     prevTasks.map((task) =>
+    //       task.task_id === updatedTask.task_id ? updatedTask : task
+    //     )
+    //   );
+    // });
 
     return () => {
-      socket.off("taskUpdated");
+      // socket.off("taskUpdated");
     };
   }, [projectId]);
 
@@ -112,7 +112,7 @@ const AdminTasks = () => {
             status: "pending", // reset status to default
           });
 
-          socket.emit("taskAssigned", res.data.task); // Notify employee
+          // socket.emit("taskAssigned", res.data.task); // Notify employee
         }
       })
       .catch((err) => console.error("Error adding task:", err));
